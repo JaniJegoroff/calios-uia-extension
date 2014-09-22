@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    calios-uia-extension (0.0.2)
+    calios-uia-extension (0.0.3)
       calabash-cucumber (>= 0.9.169)
       to_boolean (~> 1.0)
 
