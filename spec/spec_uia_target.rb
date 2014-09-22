@@ -67,6 +67,101 @@ class SpecUIATarget < Minitest::Spec
         $uia_command.must_equal('target.deviceOrientation()')
         res.must_equal(3)
       end
+
+      describe 'UIATarget.deactivate_app_for_duration and alias methods' do
+        it 'should call Calabash uia command with correct parameters and return correct response' do
+          $stub_uia_response =
+            {
+              'status' => 'success',
+              'value' => true,
+              'index' => 0
+            }
+
+          res = UIATarget.deactivate_app_for_duration
+          $uia_command.must_equal('target.deactivateAppForDuration(5)')
+          res.must_equal(true)
+
+          res = UIATarget.deactivate_app_for_duration(10)
+          $uia_command.must_equal('target.deactivateAppForDuration(10)')
+          res.must_equal(true)
+
+          res = UIATarget.send_application_to_background
+          $uia_command.must_equal('target.deactivateAppForDuration(5)')
+          res.must_equal(true)
+
+          res = UIATarget.send_application_to_background(10)
+          $uia_command.must_equal('target.deactivateAppForDuration(10)')
+          res.must_equal(true)
+        end
+      end
+
+      describe 'UIATarget.drag_from_to_for_duration and alias methods' do
+        it 'should call Calabash uia command with correct parameters and return correct response' do
+          $stub_uia_response =
+            {
+              'status' => 'success',
+              'value' => ':nil',
+              'index' => 0
+            }
+
+          UIATarget.drag_from_to_for_duration(100, 100, 200, 200, 3)
+          $uia_command.must_equal('target.dragFromToForDuration({x:100, y:100}, {x:200, y:200}, 3)')
+
+          UIATarget.drag(300, 300, 400, 400, 5)
+          $uia_command.must_equal('target.dragFromToForDuration({x:300, y:300}, {x:400, y:400}, 5)')
+        end
+      end
+
+      describe 'UIATarget.pinch_close_from_to_for_duration and alias methods' do
+        it 'should call Calabash uia command with correct parameters and return correct response' do
+          $stub_uia_response =
+            {
+              'status' => 'success',
+              'value' => ':nil',
+              'index' => 0
+            }
+
+          UIATarget.pinch_close_from_to_for_duration(100, 100, 200, 200, 3)
+          $uia_command.must_equal('target.pinchCloseFromToForDuration({x:100, y:100}, {x:200, y:200}, 3)')
+
+          UIATarget.pinch_close(300, 300, 400, 400, 5)
+          $uia_command.must_equal('target.pinchCloseFromToForDuration({x:300, y:300}, {x:400, y:400}, 5)')
+        end
+      end
+
+      describe 'UIATarget.pinch_open_from_to_for_duration and alias methods' do
+        it 'should call Calabash uia command with correct parameters and return correct response' do
+          $stub_uia_response =
+            {
+              'status' => 'success',
+              'value' => ':nil',
+              'index' => 0
+            }
+
+          UIATarget.pinch_open_from_to_for_duration(100, 100, 200, 200, 3)
+          $uia_command.must_equal('target.pinchOpenFromToForDuration({x:100, y:100}, {x:200, y:200}, 3)')
+
+          UIATarget.pinch_open(300, 300, 400, 400, 5)
+          $uia_command.must_equal('target.pinchOpenFromToForDuration({x:300, y:300}, {x:400, y:400}, 5)')
+        end
+      end
+
+      describe 'UIATarget.flick_from_to and alias methods' do
+        it 'should call Calabash uia command with correct parameters and return correct response' do
+          $stub_uia_response =
+            {
+              'status' => 'success',
+              'value' => ':nil',
+              'index' => 0
+            }
+
+          UIATarget.flick_from_to(100, 100, 200, 200)
+          $uia_command.must_equal('target.flickFromTo({x:100, y:100}, {x:200, y:200})')
+
+          UIATarget.flick(300, 300, 400, 400)
+          $uia_command.must_equal('target.flickFromTo({x:300, y:300}, {x:400, y:400})')
+        end
+      end
     end
   end
 end

@@ -11,7 +11,7 @@ class SpecUIABase < Minitest::Spec
   end
 
   describe 'UIABase' do
-    classes = [UIAAlert, UIAPopover]
+    classes = [UIAAlert, UIAPopover, UIATarget]
     classes.each do |klass|
       describe "#{klass}.execute" do
         it 'should call Calabash uia method with correct parameters' do
