@@ -64,9 +64,33 @@ Execute some example UIA commands
 
 > **`UIATarget.device_orientation`**
 
+> **`UIATarget.deactivate_application_for_duration(10)`**
+
+> **`UIATarget.send_application_to_background(10)`**
+
+> **`UIATarget.drag_from_to_for_duration(100, 100, 200, 200, 3)`**
+
+> **`UIATarget.pinch_close_from_to_for_duration(100, 100, 200, 200, 3)`**
+
+> **`UIATarget.pinch_open_from_to_for_duration(100, 100, 200, 200, 3)`**
+
+> **`UIATarget.flick_from_to(100, 100, 200, 200)`**
+
 See available methods for a certain metaclass
 
 > **`UIAAlert.help`**
+
+Did you notice alias methods?
+
+> **`UIATarget.deactivate_application_for_duration`** --> **`UIATarget.send_application_to_background`**
+
+> **`UIATarget.drag_from_to_for_duration(100, 100, 200, 200, 3)`** --> **`UIATarget.drag(100, 100, 200, 200, 3)`**
+
+> **`UIATarget.pinch_close_from_to_for_duration(100, 100, 200, 200, 3)`** --> **`UIATarget.pinch_close(100, 100, 200, 200, 3)`**
+
+> **`UIATarget.pinch_open_from_to_for_duration(100, 100, 200, 200, 3)`** --> **`UIATarget.pinch_open(100, 100, 200, 200, 3)`**
+
+> **`UIATarget.flick_from_to(100, 100, 200, 200)`** --> **`UIATarget.flick(100, 100, 200, 200)`**
 
 Run the tests
 ==========
