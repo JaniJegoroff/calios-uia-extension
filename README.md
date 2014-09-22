@@ -23,6 +23,9 @@ Currently small subset of UIA classes are supported. Supported UIA classes are:
 
 `UIAAlert`
 `UIAPopover`
+`UIATarget`
+
+See UIAutomation JavaScript Reference for details: [UIAutomation JavaScript Reference](https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html)
 
 Example use cases
 ==========
@@ -54,6 +57,12 @@ Execute some example UIA commands
 > **`UIAPopover.not_visible?`**
 
 > **`UIAPopover.dismiss`**
+
+> **`UIATarget.set_device_orientation(UIA_DEVICE_ORIENTATION_PORTRAIT)`**
+
+> **`UIATarget.set_device_orientation(3)`**
+
+> **`UIATarget.device_orientation`**
 
 See available methods for a certain metaclass
 
