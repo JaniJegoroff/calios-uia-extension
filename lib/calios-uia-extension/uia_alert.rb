@@ -1,5 +1,8 @@
 require_relative 'uia_base'
 
+#
+# Provides handling for UIAAlert commands
+#
 class UIAAlert < UIABase
   class << self
     def visible?
@@ -8,7 +11,7 @@ class UIAAlert < UIABase
     end
 
     def not_visible?
-      not self.visible?
+      !self.visible?
     end
 
     def confirm
@@ -25,7 +28,7 @@ class UIAAlert < UIABase
     end
 
     def tap(aButton)
-      raise 'invalid parameter' unless aButton.is_a?(String)
+      Kernel.fail('invalid parameter') unless aButton.is_a?(String)
       execute("uia.alert().buttons()['#{aButton}'].tap()")
     end
   end

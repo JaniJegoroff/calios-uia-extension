@@ -1,5 +1,8 @@
 require_relative 'uia_base'
 
+#
+# Provides handling for UIAPopover commands
+#
 class UIAPopover < UIABase
   class << self
     def visible?
@@ -8,7 +11,7 @@ class UIAPopover < UIABase
     end
 
     def not_visible?
-      not self.visible?
+      !self.visible?
     end
 
     def dismiss

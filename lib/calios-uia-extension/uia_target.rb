@@ -1,3 +1,6 @@
+# rubocop:disable Metrics/LineLength
+# rubocop:disable Style/AccessorMethodName
+
 require_relative 'uia_base'
 
 # Use these constant values when setting device orientation
@@ -11,6 +14,9 @@ UIA_DEVICE_ORIENTATION_FACEDOWN = 6
 # Not defined in UIAutomation API reference. This is just a shorthand.
 UIA_DEVICE_ORIENTATION_LANDSCAPE = UIA_DEVICE_ORIENTATION_LANDSCAPELEFT
 
+#
+# Provides handling for UIATarget commands
+#
 class UIATarget < UIABase
   class << self
     def set_device_orientation(aOrientation)
@@ -23,28 +29,32 @@ class UIATarget < UIABase
       response(res)
     end
 
-    def deactivate_app_for_duration(aDuration=5)
+    def deactivate_app_for_duration(aDuration = 5)
       res = execute("target.deactivateAppForDuration(#{aDuration})")
       response(res)
     end
 
     alias_method :send_application_to_background, :deactivate_app_for_duration
 
-    def drag_from_to_for_duration(aFromX, aFromY, aToX, aToY, aDuration=1)
+    def drag_from_to_for_duration(aFromX, aFromY, aToX, aToY, aDuration = 1)
       res = execute("target.dragFromToForDuration({x:#{aFromX}, y:#{aFromY}}, {x:#{aToX}, y:#{aToY}}, #{aDuration})")
       response(res)
     end
 
     alias_method :drag, :drag_from_to_for_duration
 
-    def pinch_close_from_to_for_duration(aFromX, aFromY, aToX, aToY, aDuration=1)
+    def pinch_close_from_to_for_duration(aFromX, aFromY,
+                                         aToX, aToY,
+                                         aDuration = 1)
       res = execute("target.pinchCloseFromToForDuration({x:#{aFromX}, y:#{aFromY}}, {x:#{aToX}, y:#{aToY}}, #{aDuration})")
       response(res)
     end
 
     alias_method :pinch_close, :pinch_close_from_to_for_duration
 
-    def pinch_open_from_to_for_duration(aFromX, aFromY, aToX, aToY, aDuration=1)
+    def pinch_open_from_to_for_duration(aFromX, aFromY,
+                                        aToX, aToY,
+                                        aDuration = 1)
       res = execute("target.pinchOpenFromToForDuration({x:#{aFromX}, y:#{aFromY}}, {x:#{aToX}, y:#{aToY}}, #{aDuration})")
       response(res)
     end

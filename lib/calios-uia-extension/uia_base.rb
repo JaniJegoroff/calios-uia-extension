@@ -1,5 +1,8 @@
 include Calabash::Cucumber::Core
 
+#
+# Base class for UIA commands
+#
 class UIABase
   class << self
     def execute(aCommand)
