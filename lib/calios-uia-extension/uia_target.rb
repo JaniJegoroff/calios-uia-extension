@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/LineLength
 # rubocop:disable Style/AccessorMethodName
 
 require_relative 'uia_base'
