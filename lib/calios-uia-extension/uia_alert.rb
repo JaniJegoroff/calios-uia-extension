@@ -15,7 +15,7 @@ class UIAAlert < UIABase
     end
 
     def confirm
-      execute('uia.alert().defaultButton().tap()')
+      execute('uia.alert().buttons()[1].tap()')
     end
 
     def cancel

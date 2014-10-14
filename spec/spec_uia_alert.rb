@@ -44,7 +44,7 @@ class SpecUIAAlert < Minitest::Spec
     describe 'UIAAlert.confirm' do
       it 'should call Calabash uia command with correct parameters' do
         UIAAlert.confirm
-        $uia_command.must_equal('uia.alert().defaultButton().tap()')
+        $uia_command.must_equal('uia.alert().buttons()[1].tap()')
       end
     end
 
