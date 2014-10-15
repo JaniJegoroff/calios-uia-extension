@@ -29,7 +29,14 @@ class UIATarget < UIABase
     end
 
     def deactivate_app_for_duration(aDuration = 5)
-      res = execute("target.deactivateAppForDuration(#{aDuration})")
+      # res = execute("target.deactivateAppForDuration(#{aDuration})")
+
+      # Workaround for https://github.com/JaniJegoroff/calios-uia-extension/issues/1
+      # rubocop:disable Metrics/LineLength
+      command = %[var x = target.deactivateAppForDuration(#{aDuration}); var MAX_RETRY = 5, retries = 0; while (!x && retries < MAX_RETRY) { x = target.deactivateAppForDuration(#{aDuration}); retries += 1}; x]
+      # rubocop:enable Metrics/LineLength
+      res = execute(command)
+
       response(res)
     end
 

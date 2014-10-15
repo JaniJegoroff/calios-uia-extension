@@ -78,19 +78,23 @@ class SpecUIATarget < Minitest::Spec
             }
 
           res = UIATarget.deactivate_app_for_duration
-          $uia_command.must_equal('target.deactivateAppForDuration(5)')
+          # $uia_command.must_equal('target.deactivateAppForDuration(5)')
+          $uia_command.must_equal('var x = target.deactivateAppForDuration(5); var MAX_RETRY = 5, retries = 0; while (!x && retries < MAX_RETRY) { x = target.deactivateAppForDuration(5); retries += 1}; x')
           res.must_equal(true)
 
           res = UIATarget.deactivate_app_for_duration(10)
-          $uia_command.must_equal('target.deactivateAppForDuration(10)')
+          # $uia_command.must_equal('target.deactivateAppForDuration(10)')
+          $uia_command.must_equal('var x = target.deactivateAppForDuration(10); var MAX_RETRY = 5, retries = 0; while (!x && retries < MAX_RETRY) { x = target.deactivateAppForDuration(10); retries += 1}; x')
           res.must_equal(true)
 
           res = UIATarget.send_application_to_background
-          $uia_command.must_equal('target.deactivateAppForDuration(5)')
+          # $uia_command.must_equal('target.deactivateAppForDuration(5)')
+          $uia_command.must_equal('var x = target.deactivateAppForDuration(5); var MAX_RETRY = 5, retries = 0; while (!x && retries < MAX_RETRY) { x = target.deactivateAppForDuration(5); retries += 1}; x')
           res.must_equal(true)
 
           res = UIATarget.send_application_to_background(10)
-          $uia_command.must_equal('target.deactivateAppForDuration(10)')
+          # $uia_command.must_equal('target.deactivateAppForDuration(10)')
+          $uia_command.must_equal('var x = target.deactivateAppForDuration(10); var MAX_RETRY = 5, retries = 0; while (!x && retries < MAX_RETRY) { x = target.deactivateAppForDuration(10); retries += 1}; x')
           res.must_equal(true)
         end
       end
