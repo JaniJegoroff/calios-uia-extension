@@ -1,5 +1,10 @@
+# rubocop:disable Style/GlobalVars
+# rubocop:disable Metrics/ClassLength
+# rubocop:disable Metrics/LineLength
+
 require_relative 'spec_helper'
 
+# Test class for UIATarget
 class SpecUIATarget < Minitest::Spec
   before do
     $uia_command = nil

@@ -1,5 +1,8 @@
+# rubocop:disable Style/GlobalVars
+
 require_relative 'spec_helper'
 
+# Test class for UIAPopover
 class SpecUIAPopover < Minitest::Spec
   before do
     $uia_command = nil

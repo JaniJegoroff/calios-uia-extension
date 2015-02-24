@@ -1,5 +1,8 @@
+# rubocop:disable Style/GlobalVars
+
 require_relative 'spec_helper'
 
+# Test class for UIABase
 class SpecUIABase < Minitest::Spec
   before do
     $uia_command = nil
@@ -41,9 +44,9 @@ class SpecUIABase < Minitest::Spec
         it "should return 'value' converted to boolean from response hash" do
           $stub_uia_response =
               {
-                  'status' => 'success',
-                  'value' => ':nil',
-                  'index' => 19
+                'status' => 'success',
+                'value' => ':nil',
+                'index' => 19
               }
 
           command = 'uia.window().popover().isVisible()'
