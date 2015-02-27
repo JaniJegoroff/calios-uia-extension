@@ -23,4 +23,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'minitest', '~> 5.5'
   gem.add_development_dependency 'minitest-reporters', '~> 1.0'
   gem.add_development_dependency 'rubocop', '~> 0.29'
+  gem.add_development_dependency 'coveralls', '~> 0.7'
 end
