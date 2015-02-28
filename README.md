@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/calios-uia-extension.svg)](http://badge.fury.io/rb/calios-uia-extension)
+[![Build Status](https://travis-ci.org/JaniJegoroff/calios-uia-extension.svg?branch=master)](https://travis-ci.org/JaniJegoroff/calios-uia-extension)
 [![Dependency Status](https://gemnasium.com/JaniJegoroff/calios-uia-extension.svg)](https://gemnasium.com/JaniJegoroff/calios-uia-extension)
 
 calios-uia-extension
