@@ -55,6 +55,19 @@ class SpecUIABase < Minitest::Spec
           klass.response?(res).must_equal(false)
         end
       end
+
+      describe "#{klass}.help" do
+        it 'should return public methods' do
+          klass.help.must_be_kind_of(Array)
+          klass.h.must_be_kind_of(Array)
+
+          klass.help.must_include(:help)
+          klass.h.must_include(:h)
+
+          klass.help.must_equal(klass.public_methods(false))
+          klass.h.must_equal(klass.public_methods(false))
+        end
+      end
     end
   end
 end
