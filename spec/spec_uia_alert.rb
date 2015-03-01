@@ -1,22 +1,15 @@
-# rubocop:disable Style/GlobalVars
-
 require_relative 'spec_helper'
 
 # Test class for UIAAlert
 class SpecUIAAlert < Minitest::Spec
   before do
-    $uia_command = nil
-    $uia_opts = nil
-  end
-
-  after do
-    # nop
+    @uia = Calabash::Cucumber::UIA
   end
 
   describe 'UIAAlert' do
     describe 'UIAAlert.visible?' do
       it 'should call Calabash uia command with correct parameters and return correct response' do
-        $stub_uia_response =
+        @uia.response =
           {
             'status' => 'success',
             'value' => true,
@@ -24,22 +17,22 @@ class SpecUIAAlert < Minitest::Spec
           }
 
         res = UIAAlert.visible?
-        $uia_command.must_equal('uia.alert() != null')
+        @uia.command.must_equal('uia.alert() != null')
         res.must_equal(true)
       end
     end
 
     describe 'UIAAlert.not_visible?' do
       it 'should call Calabash uia command with correct parameters and return correct response' do
-        $stub_uia_response =
-            {
-              'status' => 'success',
-              'value' => false,
-              'index' => 19
-            }
+        @uia.response =
+          {
+            'status' => 'success',
+            'value' => false,
+            'index' => 19
+          }
 
         res = UIAAlert.not_visible?
-        $uia_command.must_equal('uia.alert() != null')
+        @uia.command.must_equal('uia.alert() != null')
         res.must_equal(true)
       end
     end
@@ -47,20 +40,20 @@ class SpecUIAAlert < Minitest::Spec
     describe 'UIAAlert.confirm' do
       it 'should call Calabash uia command with correct parameters' do
         UIAAlert.confirm
-        $uia_command.must_equal('uia.alert().buttons()[1].tap()')
+        @uia.command.must_equal('uia.alert().buttons()[1].tap()')
       end
     end
 
     describe 'UIAAlert.cancel' do
       it 'should call Calabash uia command with correct parameters' do
         UIAAlert.cancel
-        $uia_command.must_equal('uia.alert().buttons()[0].tap()')
+        @uia.command.must_equal('uia.alert().buttons()[0].tap()')
       end
     end
 
     describe 'UIAAlert.button_count' do
       it 'should call Calabash uia command with correct parameters and return correct response' do
-        $stub_uia_response =
+        @uia.response =
           {
             'status' => 'success',
             'value' => [
@@ -71,7 +64,7 @@ class SpecUIAAlert < Minitest::Spec
           }
 
         res = UIAAlert.button_count
-        $uia_command.must_equal('uia.alert().buttons()')
+        @uia.command.must_equal('uia.alert().buttons()')
         res.must_equal(2)
       end
     end
@@ -84,7 +77,7 @@ class SpecUIAAlert < Minitest::Spec
 
       it 'should call Calabash uia command with correct parameters' do
         UIAAlert.tap('Cancel')
-        $uia_command.must_equal("uia.alert().buttons()['Cancel'].tap()")
+        @uia.command.must_equal("uia.alert().buttons()['Cancel'].tap()")
       end
     end
   end

@@ -1,16 +1,9 @@
-# rubocop:disable Style/GlobalVars
-
 require_relative 'spec_helper'
 
 # Test class for UIABase
 class SpecUIABase < Minitest::Spec
   before do
-    $uia_command = nil
-    $uia_opts = nil
-  end
-
-  after do
-    # nop
+    @uia = Calabash::Cucumber::UIA
   end
 
   describe 'UIABase' do
@@ -20,13 +13,13 @@ class SpecUIABase < Minitest::Spec
         it 'should call Calabash uia method with correct parameters' do
           command = 'uia.alert() != null'
           klass.execute(command)
-          $uia_command.must_equal(command)
+          @uia.command.must_equal(command)
         end
       end
 
       describe "#{klass}.response" do
         it "should return 'value' from response hash" do
-          $stub_uia_response =
+          @uia.response =
             {
               'status' => 'success',
               'value' => true,
@@ -35,23 +28,23 @@ class SpecUIABase < Minitest::Spec
 
           command = 'uia.alert() != null'
           res = klass.execute(command)
-          $uia_command.must_equal(command)
+          @uia.command.must_equal(command)
           klass.response(res).must_equal(true)
         end
       end
 
       describe "#{klass}.response?" do
         it "should return 'value' converted to boolean from response hash" do
-          $stub_uia_response =
-              {
-                'status' => 'success',
-                'value' => ':nil',
-                'index' => 19
-              }
+          @uia.response =
+            {
+              'status' => 'success',
+              'value' => ':nil',
+              'index' => 19
+            }
 
           command = 'uia.window().popover().isVisible()'
           res = klass.execute(command)
-          $uia_command.must_equal(command)
+          @uia.command.must_equal(command)
           klass.response?(res).must_equal(false)
         end
       end
