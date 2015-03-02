@@ -1,6 +1,7 @@
 [![Gem Version](https://badge.fury.io/rb/calios-uia-extension.svg)](http://badge.fury.io/rb/calios-uia-extension)
 [![Build Status](https://travis-ci.org/JaniJegoroff/calios-uia-extension.svg?branch=master)](https://travis-ci.org/JaniJegoroff/calios-uia-extension)
 [![Coverage Status](https://coveralls.io/repos/JaniJegoroff/calios-uia-extension/badge.svg?branch=master)](https://coveralls.io/r/JaniJegoroff/calios-uia-extension?branch=master)
+[![Code Climate](https://codeclimate.com/github/JaniJegoroff/calios-uia-extension/badges/gpa.svg)](https://codeclimate.com/github/JaniJegoroff/calios-uia-extension)
 [![Dependency Status](https://gemnasium.com/JaniJegoroff/calios-uia-extension.svg)](https://gemnasium.com/JaniJegoroff/calios-uia-extension)
 
 calios-uia-extension
@@ -102,7 +103,7 @@ Run the tests
 
 `$ bundle`
 
-`$ rake`
+`$ bundle exec rake`
 
 License
 ==========
