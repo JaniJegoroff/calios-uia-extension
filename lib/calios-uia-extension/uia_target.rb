@@ -1,4 +1,5 @@
 # rubocop:disable Style/AccessorMethodName
+# rubocop:disable Metrics/ParameterLists
 
 require_relative 'uia_base'
 
@@ -43,26 +44,19 @@ class UIATarget < UIABase
     alias_method :send_application_to_background, :deactivate_app_for_duration
 
     def drag_from_to_for_duration(aFromX, aFromY, aToX, aToY, aDuration = 1)
-      res = execute("target.dragFromToForDuration({x:#{aFromX}, y:#{aFromY}}, {x:#{aToX}, y:#{aToY}}, #{aDuration})")
-      response(res)
+      gesture_from_to_for_duration('dragFromToForDuration', aFromX, aFromY, aToX, aToY, aDuration)
     end
 
     alias_method :drag, :drag_from_to_for_duration
 
-    def pinch_close_from_to_for_duration(aFromX, aFromY,
-                                         aToX, aToY,
-                                         aDuration = 1)
-      res = execute("target.pinchCloseFromToForDuration({x:#{aFromX}, y:#{aFromY}}, {x:#{aToX}, y:#{aToY}}, #{aDuration})")
-      response(res)
+    def pinch_close_from_to_for_duration(aFromX, aFromY, aToX, aToY, aDuration = 1)
+      gesture_from_to_for_duration('pinchCloseFromToForDuration', aFromX, aFromY, aToX, aToY, aDuration)
     end
 
     alias_method :pinch_close, :pinch_close_from_to_for_duration
 
-    def pinch_open_from_to_for_duration(aFromX, aFromY,
-                                        aToX, aToY,
-                                        aDuration = 1)
-      res = execute("target.pinchOpenFromToForDuration({x:#{aFromX}, y:#{aFromY}}, {x:#{aToX}, y:#{aToY}}, #{aDuration})")
-      response(res)
+    def pinch_open_from_to_for_duration(aFromX, aFromY, aToX, aToY, aDuration = 1)
+      gesture_from_to_for_duration('pinchOpenFromToForDuration', aFromX, aFromY, aToX, aToY, aDuration)
     end
 
     alias_method :pinch_open, :pinch_open_from_to_for_duration
@@ -73,5 +67,12 @@ class UIATarget < UIABase
     end
 
     alias_method :flick, :flick_from_to
+
+    private
+
+    def gesture_from_to_for_duration(aGesture, aFromX, aFromY, aToX, aToY, aDuration)
+      res = execute("target.#{aGesture}({x:#{aFromX}, y:#{aFromY}}, {x:#{aToX}, y:#{aToY}}, #{aDuration})")
+      response(res)
+    end
   end
 end
