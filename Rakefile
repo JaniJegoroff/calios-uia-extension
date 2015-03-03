@@ -11,6 +11,7 @@ end
 desc 'Execute RuboCop static code analysis'
 RuboCop::RakeTask.new(:rubocop) do |t|
   t.patterns = %w(lib/calios-uia-extension/**/*.rb spec/**/*.rb)
+  t.options = %w(-D)
   t.fail_on_error = false
 end
 
